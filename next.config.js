@@ -4,8 +4,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: '/kabulmarket',
-  assetPrefix: '/kabulmarket',
+  basePath: '/kabulhalalmarket',
+  assetPrefix: '/kabulhalalmarket/',
+  trailingSlash: true,
 };
 
 module.exports = nextConfig; 
