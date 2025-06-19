@@ -1,35 +1,121 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaStar, FaThumbsUp, FaCreditCard, FaMoneyBillWave } from 'react-icons/fa';
-import { GiWheat } from 'react-icons/gi';
+import { FaStar, FaThumbsUp, FaCreditCard, FaMoneyBillWave, FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { GiWheat, GiHamburgerMenu } from 'react-icons/gi';
 
 export default function Home() {
   return (
-    <div className="max-w-7xl mx-auto">
-      {/* Navigation */}
-      <nav className="flex items-center justify-between py-6">
-        <div className="flex items-center">
-          <Image
-            src="/logo.png"
-            alt="Kabul Halal Market"
-            width={200}
-            height={80}
-            className="object-contain"
-          />
-        </div>
-        <div className="flex space-x-8">
-          <Link href="/" className="text-gray-800 hover:text-gray-600">Home</Link>
-          <Link href="#about" className="text-gray-800 hover:text-gray-600">About</Link>
-          <Link href="#products" className="text-gray-800 hover:text-gray-600">Products</Link>
-          <Link href="#reviews" className="text-gray-800 hover:text-gray-600">Reviews</Link>
-          <Link href="#contact" className="text-gray-800 hover:text-gray-600">Contact</Link>
+    <div className="relative">
+      {/* Sticky Navigation */}
+      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex items-center justify-between py-4">
+            <div className="flex items-center">
+              <Image
+                src="/logo.png"
+                alt="Kabul Halal Market"
+                width={160}
+                height={60}
+                className="object-contain"
+              />
+            </div>
+            
+            {/* Mobile Menu Button */}
+            <button className="md:hidden text-gray-600 hover:text-primary">
+              <GiHamburgerMenu size={24} />
+            </button>
+
+            {/* Desktop Menu */}
+            <div className="hidden md:flex space-x-8">
+              {['Home', 'About', 'Products', 'Reviews', 'Contact'].map((item) => (
+                <Link
+                  key={item}
+                  href={item === 'Home' ? '/' : `#${item.toLowerCase()}`}
+                  className="text-gray-800 hover:text-primary relative group py-2"
+                >
+                  {item}
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="py-16">
-        <h1 className="text-5xl font-bold mb-6">Welcome to Kabul International Halal Market</h1>
-        <p className="text-xl text-gray-600 mb-8">Your local source for fresh halal meats and groceries in Austin, Texas.</p>
+      <section className="relative h-[80vh] flex items-center">
+        <Image
+          src="/hero-bg.jpg"
+          alt="Fresh Halal Groceries"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 text-center text-white">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            Welcome to Kabul International Halal Market
+          </h1>
+          <p className="text-xl md:text-2xl mb-8 text-gray-200">
+            Your local source for fresh halal meats and groceries in Austin, Texas.
+          </p>
+          <button className="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-full text-lg font-medium shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+            Browse Fresh Meats
+          </button>
+        </div>
+      </section>
+
+      {/* Products Section */}
+      <section id="products" className="py-16 bg-secondary">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Our Products</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: 'Fresh Halal Meats',
+                image: '/meat.jpg',
+                description: 'Premium quality halal-certified meats',
+                price: 'From $8.99/lb'
+              },
+              {
+                title: 'Imported Spices',
+                image: '/spices.jpg',
+                description: 'Authentic spices from around the world',
+                price: 'From $4.99'
+              },
+              {
+                title: 'Fresh Produce',
+                image: '/produce.jpg',
+                description: 'Local and imported fresh vegetables',
+                price: 'Market Price'
+              }
+            ].map((product, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300 hover:shadow-xl"
+              >
+                <div className="relative h-48">
+                  <Image
+                    src={product.image}
+                    alt={product.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2">{product.title}</h3>
+                  <p className="text-gray-600 mb-4">{product.description}</p>
+                  <div className="flex justify-between items-center">
+                    <span className="text-primary font-medium">{product.price}</span>
+                    <button className="bg-accent text-white px-4 py-2 rounded-md hover:bg-accent/90 transition-colors">
+                      View More
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* About Section */}
@@ -41,78 +127,6 @@ export default function Home() {
           and a comprehensive selection of groceries. Our commitment to community values, customer satisfaction, 
           and quality service sets us apart.
         </p>
-      </section>
-
-      {/* Products Section */}
-      <section id="products" className="py-16">
-        <h2 className="text-3xl font-bold mb-8">Our Products</h2>
-        
-        <div className="space-y-12">
-          {/* Fresh Halal Meats */}
-          <div>
-            <h3 className="text-2xl font-semibold mb-4">Fresh Halal Meats</h3>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <li className="flex items-center space-x-2">
-                <span className="text-green-600">•</span>
-                <span>Beef: Premium cuts of halal beef</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <span className="text-green-600">•</span>
-                <span>Lamb: Tender halal lamb</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <span className="text-green-600">•</span>
-                <span>Chicken: Fresh halal chicken</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <span className="text-green-600">•</span>
-                <span>Goat: High-quality halal goat</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Imported Spices & Pantry Goods */}
-          <div>
-            <h3 className="text-2xl font-semibold mb-4">Imported Spices & Pantry Goods</h3>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <li className="flex items-center space-x-2">
-                <span className="text-green-600">•</span>
-                <span>Spices: Authentic spices from around the world</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <span className="text-green-600">•</span>
-                <span>Rice: Variety of rice grains</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <span className="text-green-600">•</span>
-                <span>Lentils: High-quality lentils</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <span className="text-green-600">•</span>
-                <span>Oils: Cooking oils and ghee</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Fresh Produce */}
-          <div>
-            <h3 className="text-2xl font-semibold mb-4">Fresh Produce</h3>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <li className="flex items-center space-x-2">
-                <span className="text-green-600">•</span>
-                <span>Fruits: Fresh and seasonal fruits</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <span className="text-green-600">•</span>
-                <span>Vegetables: Variety of fresh vegetables</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <span className="text-green-600">•</span>
-                <span>Herbs: Aromatic herbs</span>
-              </li>
-            </ul>
-          </div>
-        </div>
       </section>
 
       {/* Reviews Section */}
@@ -287,6 +301,50 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="bg-footer-bg">
+        <div className="max-w-7xl mx-auto px-4 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
+              <p>6611 Airport Blvd</p>
+              <p>Austin, TX 78752</p>
+              <p>(512) 827-6557</p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Hours</h3>
+              <p>Monday - Sunday</p>
+              <p>9:00 AM - 9:00 PM</p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
+              <div className="flex space-x-4">
+                <a href="#" className="text-gray-600 hover:text-primary">
+                  <FaFacebook size={24} />
+                </a>
+                <a href="#" className="text-gray-600 hover:text-primary">
+                  <FaInstagram size={24} />
+                </a>
+                <a href="#" className="text-gray-600 hover:text-primary">
+                  <FaTwitter size={24} />
+                </a>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Payment Methods</h3>
+              <div className="flex space-x-4">
+                <GiWheat size={24} className="text-primary" />
+                <FaCreditCard size={24} className="text-primary" />
+                <FaMoneyBillWave size={24} className="text-primary" />
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 pt-8 border-t border-gray-200 text-center text-gray-600">
+            <p>© {new Date().getFullYear()} Kabul International Halal Market. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 } 
