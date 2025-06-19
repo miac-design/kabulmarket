@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { FaStar, FaThumbsUp, FaCreditCard, FaMoneyBillWave, FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
 import { GiWheat, GiHamburgerMenu } from 'react-icons/gi';
 
+const defaultHeroImage = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100%25" height="100%25" viewBox="0 0 1200 800"%3E%3Crect fill="%232e7d32" width="1200" height="800"/%3E%3C/svg%3E';
+
 export default function Home() {
   return (
     <div className="relative">
@@ -11,13 +13,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between py-4">
             <div className="flex items-center">
-              <Image
-                src="/logo.png"
-                alt="Kabul Halal Market"
-                width={160}
-                height={60}
-                className="object-contain"
-              />
+              <h1 className="text-2xl font-bold text-primary">Kabul Halal Market</h1>
             </div>
             
             {/* Mobile Menu Button */}
@@ -43,13 +39,10 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative h-[80vh] flex items-center">
-        <Image
-          src="/hero-bg.jpg"
-          alt="Fresh Halal Groceries"
-          fill
-          className="object-cover"
-          priority
+      <section className="relative h-[80vh] flex items-center bg-primary">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${defaultHeroImage})` }}
         />
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 text-center text-white">
@@ -59,7 +52,7 @@ export default function Home() {
           <p className="text-xl md:text-2xl mb-8 text-gray-200">
             Your local source for fresh halal meats and groceries in Austin, Texas.
           </p>
-          <button className="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-full text-lg font-medium shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+          <button className="bg-accent hover:bg-accent/90 text-white px-8 py-3 rounded-full text-lg font-medium shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
             Browse Fresh Meats
           </button>
         </div>
@@ -73,37 +66,36 @@ export default function Home() {
             {[
               {
                 title: 'Fresh Halal Meats',
-                image: '/meat.jpg',
                 description: 'Premium quality halal-certified meats',
-                price: 'From $8.99/lb'
+                price: 'From $8.99/lb',
+                bgColor: '#f87171'
               },
               {
                 title: 'Imported Spices',
-                image: '/spices.jpg',
                 description: 'Authentic spices from around the world',
-                price: 'From $4.99'
+                price: 'From $4.99',
+                bgColor: '#fbbf24'
               },
               {
                 title: 'Fresh Produce',
-                image: '/produce.jpg',
                 description: 'Local and imported fresh vegetables',
-                price: 'Market Price'
+                price: 'Market Price',
+                bgColor: '#34d399'
               }
             ].map((product, index) => (
               <div
                 key={index}
                 className="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300 hover:shadow-xl"
               >
-                <div className="relative h-48">
-                  <Image
-                    src={product.image}
-                    alt={product.title}
-                    fill
-                    className="object-cover"
-                  />
+                <div 
+                  className="h-48 relative"
+                  style={{ backgroundColor: product.bgColor }}
+                >
+                  <div className="absolute inset-0 flex items-center justify-center text-white">
+                    <h3 className="text-2xl font-bold">{product.title}</h3>
+                  </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{product.title}</h3>
                   <p className="text-gray-600 mb-4">{product.description}</p>
                   <div className="flex justify-between items-center">
                     <span className="text-primary font-medium">{product.price}</span>
