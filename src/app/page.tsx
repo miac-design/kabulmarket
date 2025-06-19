@@ -18,10 +18,10 @@ export default function Home() {
   return (
     <div className="relative">
       {/* Sticky Navigation */}
-      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
+      <nav className="sticky top-0 z-50 bg-white shadow-md">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between py-4">
-            <div className="flex items-center">
+            <Link href="/" className="flex items-center">
               <div className="relative w-12 h-12 mr-3">
                 <Image
                   src="/images/logo.svg"
@@ -30,11 +30,11 @@ export default function Home() {
                   className="object-contain"
                 />
               </div>
-              <h1 className="text-2xl font-bold text-primary">Kabul Halal Market</h1>
-            </div>
+              <h1 className="text-2xl font-bold text-[#2e7d32]">Kabul Halal Market</h1>
+            </Link>
             
             {/* Mobile Menu Button */}
-            <button className="md:hidden text-gray-600 hover:text-primary">
+            <button className="md:hidden text-gray-600 hover:text-[#2e7d32]">
               <GiHamburgerMenu size={24} />
             </button>
 
@@ -44,10 +44,10 @@ export default function Home() {
                 <Link
                   key={item}
                   href={item === 'Home' ? '/' : `#${item.toLowerCase()}`}
-                  className="text-gray-800 hover:text-primary relative group py-2"
+                  className="text-gray-800 hover:text-[#2e7d32] relative group py-2"
                 >
                   {item}
-                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#2e7d32] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
                 </Link>
               ))}
             </div>
@@ -56,7 +56,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative h-[80vh] flex items-center">
+      <section className="relative h-[80vh] flex items-center bg-[#f9f9f9]">
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ 
@@ -65,7 +65,7 @@ export default function Home() {
             backgroundPosition: 'center'
           }}
         />
-        <div className="absolute inset-0 bg-primary/10" />
+        <div className="absolute inset-0 bg-[#2e7d32]/5" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
           <div className="flex justify-center mb-8">
             <div className="relative w-24 h-24">
@@ -77,20 +77,20 @@ export default function Home() {
               />
             </div>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-primary">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-[#2e7d32]">
             Welcome to Kabul International Halal Market
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-gray-700">
             Your local source for fresh halal meats and groceries in Austin, Texas.
           </p>
-          <button className="bg-accent hover:bg-accent/90 text-white px-8 py-3 rounded-full text-lg font-medium shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+          <button className="bg-[#ffc107] hover:bg-[#ffc107]/90 text-white px-8 py-3 rounded-full text-lg font-medium shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
             Browse Fresh Meats
           </button>
         </div>
       </section>
 
       {/* Products Section */}
-      <section id="products" className="py-16 bg-secondary">
+      <section id="products" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Our Products</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -116,7 +116,7 @@ export default function Home() {
             ].map((product, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300 hover:shadow-xl p-6"
+                className="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 hover:shadow-xl p-6"
               >
                 <div className="flex justify-center mb-6">
                   <div className="relative w-20 h-20">
@@ -131,8 +131,8 @@ export default function Home() {
                 <h3 className="text-xl font-bold text-center mb-4">{product.title}</h3>
                 <p className="text-gray-600 text-center mb-4">{product.description}</p>
                 <div className="flex justify-between items-center">
-                  <span className="text-primary font-medium">{product.price}</span>
-                  <button className="bg-accent text-white px-4 py-2 rounded-md hover:bg-accent/90 transition-colors">
+                  <span className="text-[#2e7d32] font-medium">{product.price}</span>
+                  <button className="bg-[#ffc107] text-white px-4 py-2 rounded-md hover:bg-[#ffc107]/90 transition-colors">
                     View More
                   </button>
                 </div>
@@ -142,11 +142,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section with Image */}
-      <section id="about" className="py-16 bg-gray-50">
+      {/* About Section */}
+      <section id="about" className="py-16 bg-[#f9f9f9]">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="relative h-[400px] bg-primary/5 rounded-lg flex items-center justify-center">
+            <div className="relative h-[400px] bg-[#2e7d32]/5 rounded-lg flex items-center justify-center">
               <div className="relative w-32 h-32">
                 <Image
                   src="/images/logo.svg"
@@ -265,9 +265,9 @@ export default function Home() {
       </section>
 
       {/* Contact Us Section */}
-      <section id="contact" className="py-20 bg-gray-50">
+      <section id="contact" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 text-primary">Contact Us</h2>
+          <h2 className="text-4xl font-bold text-center mb-12 text-[#2e7d32]">Contact Us</h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Information */}
             <div className="space-y-8">
@@ -292,7 +292,7 @@ export default function Home() {
                   <div>
                     <h3 className="font-bold text-lg">Email</h3>
                     <p className="text-gray-700">
-                      <a href="mailto:bakhter2021@gmail.com" className="hover:text-primary">
+                      <a href="mailto:bakhter2021@gmail.com" className="hover:text-[#2e7d32]">
                         bakhter2021@gmail.com
                       </a>
                     </p>
@@ -335,9 +335,9 @@ export default function Home() {
             </div>
             <div>
               <h3 className="text-xl font-bold mb-4">Contact Us</h3>
-              <p className="text-gray-400">123 Main Street</p>
-              <p className="text-gray-400">Austin, TX 78701</p>
-              <p className="text-gray-400">(512) 555-0123</p>
+              <p className="text-gray-400">6611 Airport Blvd</p>
+              <p className="text-gray-400">Austin, TX 78752</p>
+              <p className="text-gray-400">(512) 827-6557</p>
             </div>
             <div>
               <h3 className="text-xl font-bold mb-4">Follow Us</h3>
