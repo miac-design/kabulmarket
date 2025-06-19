@@ -1,117 +1,116 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { FaStar, FaThumbsUp, FaCreditCard, FaMoneyBillWave } from 'react-icons/fa';
 import { GiWheat } from 'react-icons/gi';
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <div className="max-w-7xl mx-auto">
       {/* Navigation */}
-      <nav className="fixed w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex justify-between items-center">
-            <h1 className="text-xl font-bold text-primary">Kabul Halal Market</h1>
-            <div className="space-x-6">
-              <a href="#" className="text-gray-700 hover:text-primary">Home</a>
-              <a href="#about" className="text-gray-700 hover:text-primary">About</a>
-              <a href="#products" className="text-gray-700 hover:text-primary">Products</a>
-              <a href="#reviews" className="text-gray-700 hover:text-primary">Reviews</a>
-              <a href="#contact" className="text-gray-700 hover:text-primary">Contact</a>
-            </div>
-          </div>
+      <nav className="flex items-center justify-between py-6">
+        <div className="flex items-center">
+          <Image
+            src="/logo.png"
+            alt="Kabul Halal Market"
+            width={200}
+            height={80}
+            className="object-contain"
+          />
+        </div>
+        <div className="flex space-x-8">
+          <Link href="/" className="text-gray-800 hover:text-gray-600">Home</Link>
+          <Link href="#about" className="text-gray-800 hover:text-gray-600">About</Link>
+          <Link href="#products" className="text-gray-800 hover:text-gray-600">Products</Link>
+          <Link href="#reviews" className="text-gray-800 hover:text-gray-600">Reviews</Link>
+          <Link href="#contact" className="text-gray-800 hover:text-gray-600">Contact</Link>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="relative h-screen">
-        <div className="absolute inset-0">
-          <Image
-            src="/storefront.jpg"
-            alt="Kabul Halal Market Storefront"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/50" />
-        </div>
-        <div className="relative h-full flex items-center justify-center text-center text-white">
-          <div className="max-w-3xl px-4">
-            <h1 className="text-5xl font-bold mb-4">Welcome to Kabul International Halal Market</h1>
-            <p className="text-xl">Your local source for fresh halal meats and groceries in Austin, Texas.</p>
-          </div>
-        </div>
+      <section className="py-16">
+        <h1 className="text-5xl font-bold mb-6">Welcome to Kabul International Halal Market</h1>
+        <p className="text-xl text-gray-600 mb-8">Your local source for fresh halal meats and groceries in Austin, Texas.</p>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 text-primary">About Us</h2>
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <p className="text-lg text-gray-700">
-              Kabul International Halal Market is a trusted local halal grocery store in Austin, Texas. 
-              We are dedicated to serving our community with the freshest meats, a wide variety of spices, 
-              and a comprehensive selection of groceries. Our commitment to community values, customer 
-              satisfaction, and quality service sets us apart.
-            </p>
-          </div>
-          <div className="relative h-[400px] w-full">
-            <Image
-              src="/store-interior.jpg"
-              alt="Store Interior"
-              fill
-              className="object-cover rounded-lg"
-            />
-          </div>
-        </div>
+      <section id="about" className="py-16 bg-gray-50">
+        <h2 className="text-3xl font-bold mb-8">About Us</h2>
+        <p className="text-lg text-gray-700 leading-relaxed">
+          Kabul International Halal Market is a trusted local halal grocery store in Austin, Texas. 
+          We are dedicated to serving our community with the freshest meats, a wide variety of spices, 
+          and a comprehensive selection of groceries. Our commitment to community values, customer satisfaction, 
+          and quality service sets us apart.
+        </p>
       </section>
 
       {/* Products Section */}
-      <section id="products" className="py-20">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 text-primary">Our Products</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Fresh Halal Meats */}
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <h3 className="text-xl font-bold mb-4 text-primary">Fresh Halal Meats</h3>
-              <ul className="space-y-2">
-                <li>Beef: Premium cuts of halal beef</li>
-                <li>Lamb: Tender halal lamb</li>
-                <li>Chicken: Fresh halal chicken</li>
-                <li>Goat: High-quality halal goat</li>
-              </ul>
-            </div>
+      <section id="products" className="py-16">
+        <h2 className="text-3xl font-bold mb-8">Our Products</h2>
+        
+        <div className="space-y-12">
+          {/* Fresh Halal Meats */}
+          <div>
+            <h3 className="text-2xl font-semibold mb-4">Fresh Halal Meats</h3>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <li className="flex items-center space-x-2">
+                <span className="text-green-600">•</span>
+                <span>Beef: Premium cuts of halal beef</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <span className="text-green-600">•</span>
+                <span>Lamb: Tender halal lamb</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <span className="text-green-600">•</span>
+                <span>Chicken: Fresh halal chicken</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <span className="text-green-600">•</span>
+                <span>Goat: High-quality halal goat</span>
+              </li>
+            </ul>
+          </div>
 
-            {/* Imported Spices & Pantry Goods */}
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <h3 className="text-xl font-bold mb-4 text-primary">Imported Spices & Pantry Goods</h3>
-              <ul className="space-y-2">
-                <li>Spices: Authentic spices from around the world</li>
-                <li>Rice: Variety of rice grains</li>
-                <li>Lentils: High-quality lentils</li>
-                <li>Oils: Cooking oils and ghee</li>
-              </ul>
-            </div>
+          {/* Imported Spices & Pantry Goods */}
+          <div>
+            <h3 className="text-2xl font-semibold mb-4">Imported Spices & Pantry Goods</h3>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <li className="flex items-center space-x-2">
+                <span className="text-green-600">•</span>
+                <span>Spices: Authentic spices from around the world</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <span className="text-green-600">•</span>
+                <span>Rice: Variety of rice grains</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <span className="text-green-600">•</span>
+                <span>Lentils: High-quality lentils</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <span className="text-green-600">•</span>
+                <span>Oils: Cooking oils and ghee</span>
+              </li>
+            </ul>
+          </div>
 
-            {/* Fresh Produce */}
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <h3 className="text-xl font-bold mb-4 text-primary">Fresh Produce</h3>
-              <ul className="space-y-2">
-                <li>Fruits: Fresh and seasonal fruits</li>
-                <li>Vegetables: Variety of fresh vegetables</li>
-                <li>Herbs: Aromatic herbs</li>
-                <li>Seasonal: Seasonal produce selection</li>
-              </ul>
-            </div>
-
-            {/* Middle Eastern & South Asian Essentials */}
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <h3 className="text-xl font-bold mb-4 text-primary">Middle Eastern & South Asian Essentials</h3>
-              <ul className="space-y-2">
-                <li>Traditional ingredients</li>
-                <li>Specialty items</li>
-                <li>Cultural favorites</li>
-                <li>Authentic products</li>
-              </ul>
-            </div>
+          {/* Fresh Produce */}
+          <div>
+            <h3 className="text-2xl font-semibold mb-4">Fresh Produce</h3>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <li className="flex items-center space-x-2">
+                <span className="text-green-600">•</span>
+                <span>Fruits: Fresh and seasonal fruits</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <span className="text-green-600">•</span>
+                <span>Vegetables: Variety of fresh vegetables</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <span className="text-green-600">•</span>
+                <span>Herbs: Aromatic herbs</span>
+              </li>
+            </ul>
           </div>
         </div>
       </section>
@@ -288,6 +287,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 } 
