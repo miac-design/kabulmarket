@@ -2,6 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary-color: #2e7d32;
+  --accent-color: #ffc107;
+  --secondary-color: #f9f9f9;
+}
+
+@layer base {
+  body {
+    @apply text-gray-800 bg-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-gray-900 font-bold;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-[#ffc107] hover:bg-[#ffc107]/90 text-white px-8 py-3 rounded-full text-lg font-medium shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1;
+  }
+
+  .section-padding {
+    @apply py-16;
+  }
+
+  .container-width {
+    @apply max-w-7xl mx-auto px-4;
+  }
+
+  .heading-primary {
+    @apply text-4xl md:text-6xl font-bold text-[#2e7d32];
+  }
+
+  .heading-secondary {
+    @apply text-3xl md:text-4xl font-bold;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 hover:shadow-xl p-6;
+  }
+
+  .nav-link {
+    @apply text-gray-800 hover:text-[#2e7d32] relative group py-2;
+  }
+
+  .nav-link-underline {
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-[#2e7d32] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300;
+  }
+}
+
 /* Custom styles */
 @layer base {
   html {
@@ -10,10 +60,6 @@
 }
 
 @layer components {
-  .nav-link {
-    @apply relative text-gray-800 hover:text-primary;
-  }
-
   .nav-link::after {
     @apply content-[''] absolute left-0 -bottom-1 h-0.5 w-0 bg-primary transition-all duration-300;
   }
@@ -58,14 +104,4 @@ input, textarea {
 /* Container styles */
 .container {
   @apply px-4 mx-auto max-w-7xl;
-}
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-rgb: 255, 255, 255;
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-rgb));
 } 
